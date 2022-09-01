@@ -31,10 +31,8 @@ public class Main {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Passport passport = new Passport("zxcvbn");
-        session.save(passport);
 
-        User vasya = new User("Vasya", Gender.MALE, Arrays.asList("java", "html"), new Passport("qwerty"));
+        User vasya = new User("Vasya", Gender.MALE, Arrays.asList("java", "html"), new Passport("zxcvbn"));
         User kolya = new User("Kolya", Gender.MALE, Arrays.asList("Java", "js", "mysql"), new Passport("poiuyt"));
         User olya = new User("Olya", Gender.FEMALE, Arrays.asList("python", "mongoDB"), new Passport("asdfgh"));
 
@@ -44,13 +42,14 @@ public class Main {
         session.save(olya);
 
         //select by id query
-        User user = session.find(User.class, 1);
-        System.out.println("I found - " + user);
+//        User user = session.find(User.class, 1);
+//        System.out.println("I found - " + user);
 
         //select non unique
-        List<User> resultList = session.createQuery("select u from User u", User.class)
-                .getResultList();
-        System.out.println(resultList);
+//        List<User> resultList = session.createQuery("select u from User u", User.class)
+//                .getResultList();
+//        System.out.println(resultList);
+
 
 //        delete
 //        for (User t : resultList) {
@@ -64,15 +63,19 @@ public class Main {
         session.save(bmw);
         session.save(audi);
         session.save(gm);
+//
+//        Car car = session.find(Car.class, 1);
+//        System.out.println(car);
 
-        Car car = session.find(Car.class, 1);
-        System.out.println(car);
+//        List<Car> resultListCars = session.createQuery("select c from Car c where c.modelClass='ECONOMY'", Car.class).getResultList();
+//        System.out.println("size cars list = " + resultListCars.size());
+//        for (Car resultListCar : resultListCars) {
+//            System.out.println(resultListCar);
+//        }
 
-        List<Car> resultListCars = session.createQuery("select c from Car c where c.modelClass='ECONOMY'", Car.class).getResultList();
-        System.out.println("size cars list = " + resultListCars.size());
-        for (Car resultListCar : resultListCars) {
-            System.out.println(resultListCar);
-        }
+        Passport passport1 = session.find(Passport.class, 2);
+        User user = passport1.getUser();
+        System.out.println(passport1.getUser() + " + " + passport1.getSeries() + " + " + passport1.getId());
 
         session.getTransaction().commit();
         session.close();

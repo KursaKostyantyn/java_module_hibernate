@@ -27,8 +27,9 @@ public class User {
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> skills;
 
-    @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "passport_id", referencedColumnName = "id")
+    @ToString.Exclude
     private Passport passport;
 
     public User(String name) {
