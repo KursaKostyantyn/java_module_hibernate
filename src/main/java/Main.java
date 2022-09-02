@@ -23,6 +23,7 @@ public class Main {
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(Car.class)
                 .addAnnotatedClass(Passport.class)
+                .addAnnotatedClass(Card.class)
                 .getMetadataBuilder()
 
                 .build();
@@ -44,38 +45,34 @@ public class Main {
         //select by id query
 //        User user = session.find(User.class, 1);
 //        System.out.println("I found - " + user);
-
         //select non unique
 //        List<User> resultList = session.createQuery("select u from User u", User.class)
 //                .getResultList();
 //        System.out.println(resultList);
-
-
 //        delete
 //        for (User t : resultList) {
 //            if (t.getId() == 1) session.delete(t);
 //        }
-
-        Car bmw = new Car("bmw", 2005, ModelClass.ECONOMY);
-        Car audi = new Car("audi", 2021, ModelClass.BUSINESS);
-        Car gm = new Car("gm", 2005, ModelClass.ECONOMY);
-
-        session.save(bmw);
-        session.save(audi);
-        session.save(gm);
+//        Car bmw = new Car("bmw", 2005, ModelClass.ECONOMY);
+//        Car audi = new Car("audi", 2021, ModelClass.BUSINESS);
+//        Car gm = new Car("gm", 2005, ModelClass.ECONOMY);
+//
+//        session.save(bmw);
+//        session.save(audi);
+//        session.save(gm);
 //
 //        Car car = session.find(Car.class, 1);
 //        System.out.println(car);
-
 //        List<Car> resultListCars = session.createQuery("select c from Car c where c.modelClass='ECONOMY'", Car.class).getResultList();
 //        System.out.println("size cars list = " + resultListCars.size());
 //        for (Car resultListCar : resultListCars) {
 //            System.out.println(resultListCar);
 //        }
+//        Passport passport1 = session.find(Passport.class, 2);
+//        User user = passport1.getUser();
+//        System.out.println(passport1.getUser() + " + " + passport1.getSeries() + " + " + passport1.getId());
 
-        Passport passport1 = session.find(Passport.class, 2);
-        User user = passport1.getUser();
-        System.out.println(passport1.getUser() + " + " + passport1.getSeries() + " + " + passport1.getId());
+        session.save(new Card("1234 1234 1234 1234",vasya));
 
         session.getTransaction().commit();
         session.close();
