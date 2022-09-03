@@ -16,11 +16,8 @@ public class Card {
     private int id;
     private String number;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private User user;
 
-    public Card(String number, User user) {
+    public Card(String number) {
         this.number = number;
-        this.user = user;
     }
 }

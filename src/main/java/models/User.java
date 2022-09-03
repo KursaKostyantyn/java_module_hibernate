@@ -32,6 +32,14 @@ public class User {
     @ToString.Exclude
     private Passport passport;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_card",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "card_id")
+    )
+    private List<Card> cards;
+
     public User(String name) {
         this.name = name;
     }
@@ -53,4 +61,6 @@ public class User {
         this.skills = skills;
         this.passport = passport;
     }
+
+
 }
