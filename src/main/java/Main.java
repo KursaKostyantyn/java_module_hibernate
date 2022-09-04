@@ -33,18 +33,18 @@ public class Main {
         session.beginTransaction();
 
 
-//        User vasya = new User("Vasya", Gender.MALE, Arrays.asList("java", "html"), new Passport("zxcvbn"));
-//        User kolya = new User("Kolya", Gender.MALE, Arrays.asList("Java", "js", "mysql"), new Passport("poiuyt"));
-//        User olya = new User("Olya", Gender.FEMALE, Arrays.asList("python", "mongoDB"), new Passport("asdfgh"));
-//        List<Card> cards1 = Arrays.asList(new Card("1234"), new Card("4321"));
-//        List<Card> cards2 = Arrays.asList(new Card("9874"), new Card("4789"));
-//        vasya.setCards(cards1);
-//        kolya.setCards(cards2);
-//
-//        //save obj
-//        session.save(vasya);
-//        session.save(kolya);
-//        session.save(olya);
+        User vasya = new User("Vasya", Gender.MALE, Arrays.asList("java", "html"), new Passport("zxcvbn"));
+        User kolya = new User("Kolya", Gender.MALE, Arrays.asList("Java", "js", "mysql"), new Passport("poiuyt"));
+        User olya = new User("Olya", Gender.FEMALE, Arrays.asList("python", "mongoDB"), new Passport("asdfgh"));
+        List<Card> cards1 = Arrays.asList(new Card("1234"), new Card("4321"));
+        List<Card> cards2 = Arrays.asList(new Card("9874"), new Card("4789"));
+        vasya.setCards(cards1);
+        kolya.setCards(cards2);
+
+        //save obj
+        session.save(vasya);
+        session.save(kolya);
+        session.save(olya);
 ////
 //        //select by id query
 ////        User user = session.find(User.class, 1);
