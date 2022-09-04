@@ -24,6 +24,7 @@ public class Main {
                 .addAnnotatedClass(Car.class)
                 .addAnnotatedClass(Passport.class)
                 .addAnnotatedClass(Card.class)
+                .addAnnotatedClass(Sunglass.class)
                 .getMetadataBuilder()
 
                 .build();
@@ -32,6 +33,7 @@ public class Main {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
+        List<Sunglass> sunglasses = Arrays.asList(new Sunglass("rayban"), new Sunglass("polaroid"));
 
         User vasya = new User("Vasya", Gender.MALE, Arrays.asList("java", "html"), new Passport("zxcvbn"));
         User kolya = new User("Kolya", Gender.MALE, Arrays.asList("Java", "js", "mysql"), new Passport("poiuyt"));
@@ -40,6 +42,8 @@ public class Main {
         List<Card> cards2 = Arrays.asList(new Card("9874"), new Card("4789"));
         vasya.setCards(cards1);
         kolya.setCards(cards2);
+        vasya.setSunglasses(sunglasses);
+        kolya.setSunglasses(sunglasses);
 
         //save obj
         session.save(vasya);

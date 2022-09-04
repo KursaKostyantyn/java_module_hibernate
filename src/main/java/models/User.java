@@ -40,6 +40,14 @@ public class User {
     )
     private List<Card> cards;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable (
+            name = "user_sg",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "sg_id")
+    )
+    private List<Sunglass> sunglasses;
+
     public User(String name) {
         this.name = name;
     }
@@ -62,5 +70,12 @@ public class User {
         this.passport = passport;
     }
 
-
+    public User(String name, Gender gender, List<String> skills, Passport passport, List<Card> cards, List<Sunglass> sunglasses) {
+        this.name = name;
+        this.gender = gender;
+        this.skills = skills;
+        this.passport = passport;
+        this.cards = cards;
+        this.sunglasses = sunglasses;
+    }
 }
